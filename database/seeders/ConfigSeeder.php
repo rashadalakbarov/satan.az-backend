@@ -15,22 +15,25 @@ class ConfigSeeder extends Seeder
     public function run(): void
     {
         $settings = [
-            ['key' => 'site_name',       'value' => 'Satan.az'],
-            ['key' => 'logo_url',        'value' => '/images/logo.png'],
-            ['key' => 'facebook_url',    'value' => 'https://facebook.com/myPage'],
-            ['key' => 'instagram_url',   'value' => 'https://instagram.com/myPage'],
-            ['key' => 'tiktok_url',      'value' => 'https://tiktok.com/@myPage'],
-            ['key' => 'phone',           'value' => '+99455 821 56 73'],
-            ['key' => 'address',         'value' => 'Bakı, Azərbaycan'],
-            ['key' => 'primary_color',   'value' => '#0d6efd'],
-            ['key' => 'secondary_color', 'value' => '#6c757d'],
-            ['key' => 'email',           'value' => 'info@myawesomesite.com'],
+            ['key' => 'site_name',       'value' => 'PicTap.az',                    'other' => ''],
+            ['key' => 'logo_url',        'value' => 'storage/logo/logo.png',        'other' => ''],
+            ['key' => 'facebook_url',    'value' => 'https://facebook.com/PicTap',  'other' => 'FaFacebookF'],
+            ['key' => 'instagram_url',   'value' => 'https://instagram.com/PicTap', 'other' => 'FaInstagram'],
+            ['key' => 'phone',           'value' => '+99455 821 56 73',             'other' => ''],
+            ['key' => 'address',         'value' => 'Bakı, Azərbaycan',             'other' => ''],
+            ['key' => 'primary_color',   'value' => '#6bbe66',                      'other' => ''],
+            ['key' => 'secondary_color', 'value' => '#00a1f1',                      'other' => ''],
+            ['key' => 'other_color',     'value' => '#ff4141',                      'other' => ''],
+            ['key' => 'email',           'value' => 'pictap.official@gmail.com',    'other' => ''],
         ];
 
         foreach ($settings as $setting) {
             DB::table('configs')->updateOrInsert(
                 ['key' => $setting['key']],
-                ['value' => $setting['value']]
+                [
+                    'value' => $setting['value'],
+                    'other' => $setting['other'],
+                ]
             );
         }
     }

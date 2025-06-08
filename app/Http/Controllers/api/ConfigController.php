@@ -10,8 +10,15 @@ use App\Models\Config;
 class ConfigController extends Controller
 {
     public function index() {
-        return response()->json(
-            Config::all()->pluck('value', 'key')
-        );
+        $settings = Config::all()->mapWithKeys(function ($item) {
+            return [
+                $item->key => [
+                    'value' => $item->value,
+                    'other' => $item->other, // optional: rename to "other" if you prefer
+                ]
+            ];
+        });
+
+        return response()->json($settings);
     }
 }
