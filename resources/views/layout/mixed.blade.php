@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ $company['name'] }} - @yield('title')</title>
         <link rel="icon" type="image/x-icon" href="{{asset('storage/' . ($company['logo'] ?? ''))}}" />
@@ -15,8 +16,10 @@
         rel="stylesheet"
         />
 
-        <!-- Icons. Uncomment required icon fonts -->
         <link rel="stylesheet" href="{{asset('assets')}}/vendor/fonts/boxicons.css" />
+
+        <!-- Fontawesome 6.7.2 -->
+        <link rel="stylesheet" href="{{asset('assets')}}/vendor/fonts/fontawesome-6.7.2/css/all.min.css" />
 
         <!-- Core CSS -->
         <link rel="stylesheet" href="{{asset('assets')}}/vendor/css/core.css" class="template-customizer-core-css" />
@@ -26,8 +29,6 @@
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="{{asset('assets')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-        <!-- Page CSS -->
-        <link rel="stylesheet" href="{{asset('assets')}}/vendor/libs/apex-charts/apex-charts.css" />
         <!-- Helpers -->
         <script src="{{asset('assets')}}/vendor/js/helpers.js"></script>
 
@@ -53,7 +54,7 @@
                         
                         <!-- Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> @yield('title')</h4>
+                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Ana səhifə /</span> @yield('title')</h4>
                             @yield('content')
                         </div>
                         <!-- / Content -->
@@ -83,13 +84,9 @@
         <script src="../assets/vendor/js/menu.js"></script>
         <!-- endbuild -->
 
-        <!-- Vendors JS -->
-        <script src="{{asset('assets')}}/vendor/libs/apex-charts/apexcharts.js"></script>
-
         <!-- Main JS -->
-        <script src="{{asset('assets')}}/js/main.js"></script>
+        <script src="{{asset('assets')}}/js/main.js"></script>       
 
-        <!-- Page JS -->
-        <script src="{{asset('assets')}}/js/dashboards-analytics.js"></script>
+        @yield('js')
     </body>
 </html>

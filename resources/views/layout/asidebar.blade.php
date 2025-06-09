@@ -14,13 +14,21 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item {{ request()->routeIs('admin.mycompany.edit') ? 'active' : '' }}">
-            <a href="{{ route('admin.mycompany.edit') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-globe-alt"></i>
-                <div data-i18n="Company" class="text-capitalize">Company settings</div>
+    <ul class="menu-inner py-1 mt-4">
+        
+        <li class="menu-item {{ request()->routeIs('admin.cities.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.cities.index') }}" class="menu-link">
+                <i class="menu-icon fa-solid fa-city"></i>
+                <div class="text-capitalize">Şəhərlər</div>
             </a>
         </li>
+
+        <li class="menu-item {{ request()->routeIs('admin.mycompany.edit') ? 'active' : '' }}">
+            <a href="{{ route('admin.mycompany.edit') }}" class="menu-link">
+                <i class="menu-icon fa-solid fa-building"></i>
+                <div class="text-capitalize">Şirkət Ayarları</div>
+            </a>
+        </li>
+
     </ul>
 </aside>

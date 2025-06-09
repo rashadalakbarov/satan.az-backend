@@ -1,12 +1,12 @@
 @extends('layout.mixed')
 
-@section('title', 'My Company')
+@section('title', 'Şirkət Ayarları')
 
 @section('content')
 <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
-            <h5 class="card-header">Company Settings</h5>
+            <h5 class="card-header">Şirkət Məlumatları</h5>
             <div class="card-body">
                  @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
@@ -16,7 +16,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="default_company_name" class="form-label">Company Name</label>
+                        <label for="default_company_name" class="form-label">Şirkətin adı</label>
                         <input
                             type="text"
                             class="form-control"
@@ -35,7 +35,7 @@
 
                     <img src="{{ $settings['logo_url'] === 'storage/logo/logo.png' ? asset('storage/logo/logo.png') : asset('storage/' . ($company['logo'] ?? '')) }}" width="100" alt="Logo" class="border mb-3"><br>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Təsdiqlə</button>
                 </form>
             </div>
         </div>
