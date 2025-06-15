@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+        'api' => [
+            'driver' => 'jwt', // əgər tymon/jwt istifadə edirsənsə
+            'provider' => 'users',
+        ],
     ],
 
     /*
