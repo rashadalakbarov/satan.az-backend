@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MyCompanyController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ElanlarController;
+use App\Http\Controllers\admin\CategoryController;
 
 Route::name('admin.')->controller(AuthController::class)->group(function () {
     Route::group(['middleware'=> 'admin.guest'], function(){
@@ -42,6 +43,9 @@ Route::name('admin.')->controller(AuthController::class)->group(function () {
             Route::get('/elanlar/{id}', 'show')->name('show');
             Route::post('/elanlar/{id}', 'update')->name('update');
         });
+
+        // categories
+        Route::resource('categories', CategoryController::class);
     });
     
 });

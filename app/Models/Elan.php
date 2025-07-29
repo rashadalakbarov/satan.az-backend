@@ -19,7 +19,7 @@ class Elan extends Model
         'status',
     ];
 
-     public function getActivateTextAttribute() {
+    public function getActivateTextAttribute() {
         switch ($this->activate) {
             case 'active':
                 return 'Aktiv';

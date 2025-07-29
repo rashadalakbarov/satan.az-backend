@@ -16,11 +16,31 @@
 
     <ul class="menu-inner py-1 mt-4">
 
-        <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-            <a href="{{route('admin.dashboard')}}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-            <div data-i18n="Analytics">Ana Səhifə</div>
+        <li class="menu-item {{ request()->routeIs('admin.index') ? 'active' : '' }}">
+            <a href="{{route('admin.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <div class="text-capitalize">Ana Səhifə</div>
             </a>
+        </li>
+
+        <li class="menu-item {{Request::routeIs('admin.categories.*') ? 'active open' : ''}}" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div class="text-capitalize">Kateqoriyalar</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.categories.index') ? 'active' : '' }}">
+                  <a href="{{route('admin.categories.index')}}" class="menu-link">
+                    <div class="text-capitalize">Bütün kateqoriyalar</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.categories.create') ? 'active' : '' }}">
+                  <a href="{{route('admin.categories.create')}}" class="menu-link">
+                    <div class="text-capitalize">Kateqoriya yarat</div>
+                  </a>
+                </li>
+            </ul>
         </li>
 
         <li class="menu-item {{ request()->routeIs('admin.elanlar.index') ? 'active' : '' }}">

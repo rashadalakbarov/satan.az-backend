@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $company['name'] ? $company['name'] : "Satan.az" }} - Giriş</title>
+        <title>{{ $company['name'] ? $company['name'] : "Satan.az" }} - @yield('title')</title>
         <link rel="icon" type="image/x-icon" href="{{ $company['logo'] === 'storage/logo/logo.png' ? asset('storage/logo/logo.png') : asset('assets/img/favicon/favicon.png')}}">
 
         <!-- Fonts -->
@@ -87,7 +87,7 @@
         <script src="{{asset('assets')}}/vendor/js/bootstrap.js"></script>
         <script src="{{asset('assets')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-        <script src="../assets/vendor/js/menu.js"></script>
+        <script src="{{asset('assets')}}/vendor/js/menu.js"></script>
         <!-- endbuild -->
 
         <!-- Main JS -->
