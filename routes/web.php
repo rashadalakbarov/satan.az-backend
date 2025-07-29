@@ -20,6 +20,8 @@ Route::name('admin.')->controller(AuthController::class)->group(function () {
         // company settings
         Route::get('/my-company', [MyCompanyController::class, 'edit'])->name('mycompany.edit');
         Route::post('/my-company', [MyCompanyController::class, 'update'])->name('mycompany.update');
+        Route::post('/my-company/contact', [MyCompanyController::class, 'contact'])->name('mycompany.contact');
+        Route::post('/my-company/social', [MyCompanyController::class, 'social'])->name('mycompany.social');
 
         // cities
         Route::get('/cities', [CityController::class, 'index'])->name('cities.index');

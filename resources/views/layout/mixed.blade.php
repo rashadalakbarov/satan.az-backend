@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $company['name'] }} - @yield('title')</title>
-        <link rel="icon" type="image/x-icon" href="{{asset('storage/' . ($company['logo'] ?? ''))}}" />
+        <title>{{ $company['name'] ? $company['name'] : "Satan.az" }} - Giriş</title>
+        <link rel="icon" type="image/x-icon" href="{{ $company['logo'] === 'storage/logo/logo.png' ? asset('storage/logo/logo.png') : asset('assets/img/favicon/favicon.png')}}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,7 +54,13 @@
                         
                         <!-- Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Ana səhifə /</span> @yield('title')</h4>
+                            <h4 class="fw-bold py-3 mb-4">
+                                 @if (!request()->routeIs('admin.dashboard'))
+                                    {!! '<span class="text-muted fw-light">Ana səhifə /</span>' !!}
+                                @endif 
+                                @yield('title')
+                            </h4>
+
                             @yield('content')
                         </div>
                         <!-- / Content -->

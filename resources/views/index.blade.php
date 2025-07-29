@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta Tags -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ $company['name'] }} - Giriş</title>
-        <link rel="icon" type="image/x-icon" href="{{asset('assets')}}/img/favicon/favicon.ico" />
+        <title>{{ $company['name'] ?? "Satan.az" }} - Giriş</title>
+        <link rel="icon" type="image/x-icon" href="{{ isset($company['logo']) ? asset('/' . $company['logo']) : asset('assets/img/favicon/favicon.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,7 +45,7 @@
                             
                             <div class="app-brand justify-content-center">
                                 <a href="{{route('admin.index')}}" class="app-brand-link gap-2">
-                                    <span class="app-brand-text demo menu-text fw-bolder ms-2 mt-2">{{ $company['name'] }}</span>
+                                    <span class="app-brand-text demo menu-text fw-bolder ms-2 mt-2">{{ $company['name'] ?? "Satan.az" }}</span>
                                 </a>
                             </div>
 

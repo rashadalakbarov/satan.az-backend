@@ -1,6 +1,6 @@
 @extends('layout.mixed')
 
-@section('title', 'Dashboard')
+@section('title', 'Ana Səhifə')
 
 @section('content')
 
