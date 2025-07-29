@@ -22,13 +22,20 @@
             <div data-i18n="Analytics">Ana Səhifə</div>
             </a>
         </li>
+
+        <li class="menu-item {{ request()->routeIs('admin.elanlar.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.elanlar.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div class="text-capitalize">Elanlar</div>
+            </a>
+        </li>
         
         <li class="menu-item {{ request()->routeIs('admin.cities.index') ? 'active' : '' }}">
             <a href="{{ route('admin.cities.index') }}" class="menu-link">
                 <i class="menu-icon fa-solid fa-city"></i>
                 <div class="text-capitalize">Şəhərlər</div>
             </a>
-        </li>
+        </li>        
 
         <li class="menu-item {{ request()->routeIs('admin.mycompany.edit') ? 'active' : '' }}">
             <a href="{{ route('admin.mycompany.edit') }}" class="menu-link">

@@ -55,7 +55,7 @@ class MyCompanyController extends Controller
             Config::setValue('logo_url', $path);
         }
 
-        return redirect()->back()->with('success', 'Settings updated successfully.');
+        return redirect()->back()->with('success', 'Parametrlər şəkildə uğurla yeniləndi.');
     }
 
     public function contact(Request $request){
@@ -90,7 +90,7 @@ class MyCompanyController extends Controller
         Config::setValue('email', $request->input('company_email'));
         Config::setValue('address', $request->input('company_address'));
 
-        return redirect()->back()->with('success', 'Settings updated successfully.');
+        return redirect()->back()->with('success', 'Parametrlər şəkildə uğurla yeniləndi.');
     }
 
     public function social(Request $request){
@@ -105,6 +105,6 @@ class MyCompanyController extends Controller
         Config::setValue('facebook_url', $request->input('company_facebook'));
         Config::setValue('instagram_url', $request->input('company_instagram'));
 
-        return redirect()->back()->with('success', 'Settings updated successfully.');
+        return redirect()->back()->with('success', 'Parametrlər şəkildə uğurla yeniləndi.');
     }
 }
