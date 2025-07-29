@@ -115,7 +115,7 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Yadda saxla</button>
-                                <button type="reset" class="btn btn-outline-secondary">İmtina</button>
+                                <a href="{{ route('admin.elanlar.index') }}" class="btn btn-secondary">Geri</a>
                             </div>
                         </form>
                     <!-- /Account -->

@@ -15,7 +15,7 @@ class ElanSeeder extends Seeder
     public function run(): void
     {
         DB::table('elans')->insert([
-            'user_id' => "2",
+            'user_id' => "3",
             'title' => "Monster Gaming And Desing v2",
             'price' => "3650",
             'city_id' => "8",
