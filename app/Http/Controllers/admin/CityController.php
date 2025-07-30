@@ -17,7 +17,6 @@ class CityController extends Controller
         $cities = City::orderBy('name')->paginate(10);
 
         return view('cities', compact('cities'));
-
     }
 
     public function store(Request $request){

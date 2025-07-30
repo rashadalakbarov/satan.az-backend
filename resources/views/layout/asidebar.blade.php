@@ -43,7 +43,7 @@
             </ul>
         </li>
 
-        <li class="menu-item {{Request::routeIs('admin.options.*') ? 'active open' : ''}}" style="">
+        <li class="menu-item {{Request::routeIs(['admin.options.*', 'admin.suboptions.*']) ? 'active open' : ''}}" style="">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div class="text-capitalize">Özəlliklər</div>
@@ -58,6 +58,11 @@
                 <li class="menu-item {{ request()->routeIs('admin.options.create') ? 'active' : '' }}">
                   <a href="{{route('admin.options.create')}}" class="menu-link">
                     <div class="text-capitalize">Özəllik yarat</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.suboptions.index') ? 'active' : '' }}">
+                  <a href="{{route('admin.suboptions.index')}}" class="menu-link">
+                    <div class="text-capitalize">Alt özəlliklər</div>
                   </a>
                 </li>
             </ul>

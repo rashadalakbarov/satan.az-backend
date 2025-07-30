@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ElanlarController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\OptionController;
+use App\Http\Controllers\admin\OptionValueController;
 
 Route::name('admin.')->controller(AuthController::class)->group(function () {
     Route::group(['middleware'=> 'admin.guest'], function(){
@@ -50,6 +51,15 @@ Route::name('admin.')->controller(AuthController::class)->group(function () {
 
         // options
         Route::resource('options', OptionController::class);
+
+        // option value
+        Route::name('suboptions.')->controller(OptionValueController::class)->group(function (){
+            Route::get('/suboptions', 'index')->name('index');
+            Route::post('/suboptions', 'store')->name('store');
+            Route::get('/suboptions/{id}', 'show')->name('show');
+            Route::put('/suboptions/{id}', 'update')->name('update');
+            Route::delete('/suboptions/{id}', 'delete')->name('delete');
+        });
     });
     
 });

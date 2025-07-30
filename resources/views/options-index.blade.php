@@ -14,6 +14,7 @@
 <div class="row">
     <div class="col-12 col-md-4">
         <a href="{{route('admin.options.create')}}" class="btn btn-outline-success mb-4">Yeni özəllik</a>
+        <a href="{{route('admin.suboptions.index')}}" class="btn btn-outline-primary mb-4">Alt özəlliklər</a>
     </div>
     
     <div class="col-12">
