@@ -16,6 +16,10 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
+    public function options() {
+        return $this->hasMany(Option::class);
+    }
+
     public function getActivateTextAttribute() {
         switch ($this->activate) {
             case 'active':

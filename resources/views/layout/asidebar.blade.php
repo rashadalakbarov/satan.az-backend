@@ -18,7 +18,7 @@
 
         <li class="menu-item {{ request()->routeIs('admin.index') ? 'active' : '' }}">
             <a href="{{route('admin.index')}}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div class="text-capitalize">Ana Səhifə</div>
             </a>
         </li>
@@ -38,6 +38,26 @@
                 <li class="menu-item {{ request()->routeIs('admin.categories.create') ? 'active' : '' }}">
                   <a href="{{route('admin.categories.create')}}" class="menu-link">
                     <div class="text-capitalize">Kateqoriya yarat</div>
+                  </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item {{Request::routeIs('admin.options.*') ? 'active open' : ''}}" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div class="text-capitalize">Özəlliklər</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.options.index') ? 'active' : '' }}">
+                  <a href="{{route('admin.options.index')}}" class="menu-link">
+                    <div class="text-capitalize">Əsas özəlliklər</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.options.create') ? 'active' : '' }}">
+                  <a href="{{route('admin.options.create')}}" class="menu-link">
+                    <div class="text-capitalize">Özəllik yarat</div>
                   </a>
                 </li>
             </ul>

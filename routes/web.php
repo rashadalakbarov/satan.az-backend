@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\MyCompanyController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ElanlarController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\OptionController;
 
 Route::name('admin.')->controller(AuthController::class)->group(function () {
     Route::group(['middleware'=> 'admin.guest'], function(){
@@ -46,6 +47,9 @@ Route::name('admin.')->controller(AuthController::class)->group(function () {
 
         // categories
         Route::resource('categories', CategoryController::class);
+
+        // options
+        Route::resource('options', OptionController::class);
     });
     
 });
