@@ -40,8 +40,7 @@
                     <i class="fa-solid fa-user fs-5"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Şəxsi kabinet</a></li>
-                    <li><a class="dropdown-item" href="#">Seçilmişlər</a></li>
+                    <li><a class="dropdown-item" href="{{route('profile.index')}}">Şəxsi kabinet</a></li>
                     <li>
                         <a class="dropdown-item" href="{{route('profile.logout')}}">Çıxış</a>
                     </li>

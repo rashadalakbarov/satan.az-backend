@@ -84,4 +84,6 @@ Route::controller(AuthFrontController::class)->middleware(['profile.guest'])->gr
 Route::prefix('profile')->middleware(['web', 'auth:phone'])->name('profile.')->group(function(){
     Route::get('/', [DashboardProfileController::class, 'index'])->name('index');
     Route::get('/logout', [DashboardProfileController::class, 'logout'])->name('logout');
+
+    Route::put('/user/{phone}', [DashboardProfileController::class, 'user'])->name('user.update');
 });

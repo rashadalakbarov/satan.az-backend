@@ -35,5 +35,7 @@
 
         <!-- Main JS -->
         <script src="{{asset('/')}}front/js/main.js"></script>
+
+        @yield('javascript')
     </body>
 </html>

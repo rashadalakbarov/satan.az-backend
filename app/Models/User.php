@@ -51,4 +51,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function elanlar() {
+        return $this->hasMany(Elan::class); // Ad modeli varsa
+    }
 }
