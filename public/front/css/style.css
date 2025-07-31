@@ -1,0 +1,179 @@
+:root {
+    --main-color: red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fcfcfc;
+}
+
+/* [ BOOTSTRAP ]
+================================================>  */
+.navbar-toggler {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.navbar-toggler:focus,
+.form-control:focus,
+button:focus,
+.form-select:focus {
+    box-shadow: none !important;
+}
+
+.form-control {
+    box-shadow: none !important;
+}
+
+.main-tab .nav-link.active,
+.main-tab .show > .nav-link {
+    background-color: var(--main-color);
+}
+
+.nav-link {
+    color: #a3a3a4;
+}
+
+/* [ DETAIL PAGE ]
+================================================>  */
+.small-img {
+    width: 171px;
+    height: 120px;
+}
+.small-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+}
+.detail-hashtag {
+    padding-left: 0;
+    font-style: italic;
+}
+.detail-hashtag li {
+    padding: 5px 8px;
+    background-color: var(--main-color);
+    border-radius: var(--border-radius);
+    margin: 0px 7px 10px 0;
+    float: left;
+}
+.detail-hashtag li a {
+    color: #fff;
+    text-decoration: none;
+}
+.profile-img {
+    width: 72px;
+    height: 72px;
+    max-width: 72px;
+    min-width: 72px;
+    max-height: 72px;
+    margin-right: 12px;
+    position: relative;
+}
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+}
+.profile-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    align-items: flex-start;
+}
+.profile-data strong {
+    font-weight: 700;
+    font-size: 17px;
+    margin: 0 0 3px 0;
+    color: #171717;
+}
+.profile-data a {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+.profile-data span.dots {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+/* [ ADD PAGE ]
+================================================>  */
+.add-img {
+    padding-left: 0;
+}
+.add-img li {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+.add-img li div.img-data {
+    width: 140px;
+    height: 110px;
+    position: relative;
+}
+.add-img li div.img-data img {
+    width: 100%;
+    height: 100%;
+}
+.add-img li div.img-data button {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    background-color: #fff;
+    font-size: 12px;
+    padding: 4px;
+}
+
+/* [ RESPONSIVE ]
+================================================>  */
+@media only screen and (min-width: 1399px) {
+    .card-responsive {
+        width: 20% !important;
+    }
+}
+
+@media only screen and (max-width: 1399px) {
+    .card-responsive {
+        width: 25% !important;
+    }
+    .card-item {
+        width: 17.3rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card-responsive {
+        width: 30% !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .card-responsive {
+        width: 40% !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .card-responsive {
+        width: 50% !important;
+    }
+    .card-item {
+        width: 16rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .card-item {
+        width: 14.7rem;
+    }
+}

@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin.guest' => \App\Http\Middleware\admin\AdminRedirect::class,
             'admin.auth' => \App\Http\Middleware\admin\AdminAuthenticate::class,
+
+            'profile.guest' => \App\Http\Middleware\profile\PhoneRedirect::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

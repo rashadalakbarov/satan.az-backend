@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// admin panel
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MyCompanyController;
@@ -11,7 +12,14 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\OptionValueController;
 
-Route::name('admin.')->controller(AuthController::class)->group(function () {
+// frontend
+use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\AuthFrontController;
+
+// profile
+use App\Http\Controllers\profile\DashboardProfileController;
+
+Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group(function () {
     Route::group(['middleware'=> 'admin.guest'], function(){
         Route::get('/', 'index')->name('index');
         Route::post('/', 'authenticate')->name('index.auth');
@@ -62,4 +70,18 @@ Route::name('admin.')->controller(AuthController::class)->group(function () {
         });
     });
     
+});
+
+// home
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::controller(AuthFrontController::class)->middleware(['profile.guest'])->group(function(){
+    Route::get('/login', 'index')->name('login');
+    Route::post('/send-otp', 'sendOtp')->name('send-otp');
+    Route::post('/verify-otp', 'verifyOtp')->name('verify-otp');
+});
+
+// profile
+Route::prefix('profile')->middleware(['web', 'auth:phone'])->name('profile.')->group(function(){
+    Route::get('/', [DashboardProfileController::class, 'index'])->name('index');
+    Route::get('/logout', [DashboardProfileController::class, 'logout'])->name('logout');
 });

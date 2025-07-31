@@ -153,7 +153,7 @@
            if(confirm("Silmək istədiyinə əminsən?")){
                 $.ajax({
                     type: "DELETE",
-                    url: "/cities/" + id,
+                    url: "/admin/cities/" + id,
                     dataType: 'json',
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     success: function(response) {
@@ -173,7 +173,7 @@
             
             $.ajax({
                 type: "GET",
-                url: "/cities/" + id,
+                url: "/admin/cities/" + id,
                 dataType: 'json',
                 success: function(response) {
                     $('#post-id').val(response.city.id);
@@ -196,7 +196,7 @@
 
             $.ajax({
                 type: "PUT",
-                url: "/cities/" + $("#post-id").val(),
+                url: "/admin/cities/" + $("#post-id").val(),
                 data: formData,
                 dataType: 'json',
                 success: function(response) {
@@ -228,7 +228,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/cities",
+                url: "/admin/cities",
                 data: formData,
                 dataType: 'json',
                 success: function(response) {

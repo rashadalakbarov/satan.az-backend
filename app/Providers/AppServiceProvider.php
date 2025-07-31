@@ -28,7 +28,12 @@ class AppServiceProvider extends ServiceProvider
                 'logo' => Config::get('logo_url'),
             ];
 
-            $view->with('company', $company);
+            $socialSettings = Config::where('key', 'like', '%_url')->get();
+
+            $view->with([
+                'company' => $company,
+                'socialSettings' => $socialSettings,
+            ]);
         });
     }
 }

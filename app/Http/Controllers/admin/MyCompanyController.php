@@ -63,7 +63,7 @@ class MyCompanyController extends Controller
             'company_email.required' => 'E-poçt sahəsi boş buraxılmamalıdır.',
             'company_email.email' => 'Geçərli bir e-poçt giriniz.',
 
-            'company_phone.required' => 'Telefon sahəsi boş buraxılmamalıdır.',
+            'company_phone.required' => 'Telefon nömrəsi boş buraxılmamalıdır.',
             'company_phone.regex' => 'Telefon nömrəsi "+994XX XXX XX XX" formatında olmalıdır.',
 
             'company_address.required' => 'Ünvan sahəsi boş buraxılmamalıdır.',

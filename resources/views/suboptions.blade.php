@@ -194,7 +194,7 @@
            if(confirm("Silmək istədiyinə əminsən?")){
                 $.ajax({
                     type: "DELETE",
-                    url: "/suboptions/" + id,
+                    url: "/admin/suboptions/" + id,
                     dataType: 'json',
                     data: {_token: $('meta[name="csrf-token"]').attr('content')},
                     success: function(response) {
@@ -214,7 +214,7 @@
             
             $.ajax({
                 type: "GET",
-                url: "/suboptions/" + id,
+                url: "/admin/suboptions/" + id,
                 dataType: 'json',
                 success: function(response) {
                     $('#post_id').val(response.suboption.id);
@@ -249,7 +249,7 @@
 
             $.ajax({
                 type: "PUT",
-                url: "/suboptions/" + $("#post_id").val(),
+                url: "/admin/suboptions/" + $("#post_id").val(),
                 data: formData,
                 dataType: 'json',
                 success: function(response) {
@@ -283,7 +283,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/suboptions",
+                url: "/admin/suboptions",
                 data: formData,
                 dataType: 'json',
                 success: function(response) {

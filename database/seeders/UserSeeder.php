@@ -33,6 +33,7 @@ class UserSeeder extends Seeder
             'name' => "John Doe",
             'email' => 'johndoe@gmail.com',
             'password' => Hash::make('password'),
+            'phone' => '+99455 821 56 73',
         ]);
     }
 }
