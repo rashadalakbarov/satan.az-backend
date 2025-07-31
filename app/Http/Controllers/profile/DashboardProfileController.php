@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Elan;
 
+use Illuminate\Support\Facades\Validator;
+
 class DashboardProfileController extends Controller
 {
     public function index(){
@@ -34,7 +36,7 @@ class DashboardProfileController extends Controller
             'exampleName' => trim($request->input('exampleName'))
         ]);
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'exampleName' => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
             'exampleEmail' => 'required|email',
         ], [
@@ -47,11 +49,15 @@ class DashboardProfileController extends Controller
             'exampleEmail.email' => 'Geçərli bir e-poçt giriniz.',
         ]);
 
-        $user = User::where('phone', $phone)->firstOrFail();
-        $user->name = $request->exampleName;
-        $user->email = $request->exampleEmail;
-        $user->save();
+        if($validator->passes()){
+            $user = User::where('phone', $phone)->firstOrFail();
+            $user->name = $request->exampleName;
+            $user->email = $request->exampleEmail;
+            $user->save();
 
-        return redirect()->route('profile.index', ['tab' => 'profile'])->with('success', 'Profil məlumatları yeniləndi.');
+            return redirect()->route('profile.index', ['tab' => 'profile'])->with('success', 'Profil məlumatları yeniləndi.');
+        } else {
+             return redirect()->route('profile.index', ['tab' => 'profile'])->withInput()->withErrors($validator);
+        }
     }
 }
