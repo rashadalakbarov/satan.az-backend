@@ -15,6 +15,8 @@ use App\Http\Controllers\admin\OptionValueController;
 // frontend
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\AuthFrontController;
+use App\Http\Controllers\front\AddNewController;
+use App\Http\Controllers\front\DetailController;
 
 // profile
 use App\Http\Controllers\profile\DashboardProfileController;
@@ -74,6 +76,9 @@ Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group
 
 // home
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/new', [AddNewController::class, 'index'])->name('new');
+Route::get('/elanlar', [DetailController::class, 'index'])->name('detail');
+
 Route::controller(AuthFrontController::class)->middleware(['profile.guest'])->group(function(){
     Route::get('/login', 'index')->name('login');
     Route::post('/send-otp', 'sendOtp')->name('send-otp');
