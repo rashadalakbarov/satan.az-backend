@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('elan_options', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('name');
-            $table->string('seflink');
-            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
-            $table->string('activate')->default('active'); // active, passive
+            $table->integer('elan_id');
+            $table->integer('category_id');
+            $table->integer('option_id');
+            $table->integer('suboption_id');
+            $table->integer('value');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('elan_options');
     }
 };

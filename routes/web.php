@@ -77,6 +77,8 @@ Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group
 // home
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/new', [AddNewController::class, 'index'])->name('new');
+Route::post('/new', [AddNewController::class, 'store'])->name('new.store');
+Route::get('/new/get-options/{category_id}', [AddNewController::class, 'getOptions'])->name('get.options');
 Route::get('/elanlar', [DetailController::class, 'index'])->name('detail');
 
 Route::controller(AuthFrontController::class)->middleware(['profile.guest'])->group(function(){

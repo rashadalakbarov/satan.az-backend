@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->string('title');
             $table->enum('type', ['text', 'select', 'check']);
-            $table->enum('required', ['1', '2']);
+            $table->enum('required', ['1', '2']); // 1 => required, 2 => no required
             $table->string('activate')->default('active'); // active, passive
             $table->timestamps();
         });

@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ConfigSeeder::class,
             CitySeeder::class,
             ElanSeeder::class,
+            CategorySeeder::class,
+            OptionSeeder::class,
         ]);
     }
 }
