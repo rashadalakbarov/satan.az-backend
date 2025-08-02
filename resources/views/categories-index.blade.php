@@ -4,6 +4,14 @@
 
 @section('content')
 <div class="row">
+    <div class="col-12">
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+    </div>
+</div>
+
+<div class="row">
     <div class="col-12 col-md-4">
         <a href="{{route('admin.categories.create')}}" class="btn btn-outline-success mb-4">Yeni kateqoriya</a>
     </div>
@@ -14,7 +22,7 @@
             <div class="card-body">
                 <div class="table-responsive text-nowrap mb-4">
                     @if($categories->total() > 0)
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Kateqoriyanın adı</th>
@@ -26,7 +34,10 @@
                         <tbody class="table-border-bottom-0">                            
                                 @foreach($categories as $category)
                                     <tr>
-                                        <td>{{ $category->name }}</td>
+                                        <td>
+                                            <img src="{{ $category->image === null ? asset('assets/img/icons/empty_img.png') : asset('storage/' . $category->image)}}" width="50" alt="image" class="border me-2">
+                                            {{ $category->name }}
+                                        </td>
 
                                         <td>{{ $category->parent_id === null ? 'Ana kateqoriya' : '' }}</td>
 

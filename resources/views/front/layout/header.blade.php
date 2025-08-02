@@ -29,7 +29,7 @@
                     </span>
                 </div>
             </form>
-            <a href="{{route('new')}}" class="btn btn-success text-capitalize ms-2" >
+            <a href="{{route('new.index')}}" class="btn btn-success text-capitalize ms-2" >
                 <i class="fa-solid fa-plus me-2"></i>
                 Yeni elan
             </a>

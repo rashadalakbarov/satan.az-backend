@@ -17,26 +17,32 @@ class OptionSeeder extends Seeder
     {
         $OptionGroups = [
             [
-                'category_seflinks' => ['oyuncaqlar', 'avtomobil-oturacaqlari', 'usaq-arabalari', 'usaq-avtomobilleri', 'carpayilar-ve-besikler', 'usaq-dasiyicilari', 'usaq-geyimi', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'manejler', 'mektebliler-ucun', 'yurutecler', 'hamam-ve-gigiyena', 'usaq-tekstili', 'qidalanma-oturacaqlari', 'geyim-ve-ayaqqabilar', 'saat-ve-zinet-esyalari', 'aksesuarlar', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'masaustu-kompyuterler', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'yuk-masinlari-ve-qosqular', 'avtobuslar', 'aqrotexnika', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'su-neqliyyati', 'ehtiyyat-hisseleri-ve-aksesuarlar', 'avtomobiller'],
+                'category_seflinks' => ['oyuncaqlar', 'avtomobil-oturacaqlari', 'usaq-arabalari', 'usaq-avtomobilleri', 'carpayilar-ve-besikler', 'usaq-dasiyicilari', 'usaq-geyimi', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'manejler', 'mektebliler-ucun', 'yurutecler', 'hamam-ve-gigiyena', 'usaq-tekstili', 'qidalanma-oturacaqlari', 'geyim-ve-ayaqqabilar', 'saat-ve-zinet-esyalari', 'aksesuarlar', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'masaustu-kompyuterler', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'yuk-masinlari-ve-qosqular', 'avtobuslar', 'aqrotexnika', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'su-neqliyyati', 'ehtiyyat-hisseleri-ve-aksesuarlar', 'avtomobiller' , 'mebeller', 'meiset-texnikasi', 'qab-qacaq-ve-metbex-levazimatlari', 'xalcalar-ve-aksesuarlar', 'ev-tekstili', 'ev-ve-bag-ucun-isiqlandirma', 'dekor-ve-interyer', 'bag-ve-bostan', 'ev-teserrufati-mallari', 'kompyuter-aksesuarlari', 'oyunlar-pultlar-ve-proqramlar', 'komponentler-ve-monitorlar', 'planset-ve-elektron-kitablar', 'noutbuklar-ve-netbuklar', 'ofis-avadanligi-ve-istehlak-materiallari', 'telefonlar', 'nomreler-ve-sim-kartlar', 'fototexnika', 'sebeke-ve-server-avadanligi', 'televizorlar-ve-aksesuarlar', 'smart-saat-ve-qolbaqlar', 'velosipedler', 'kolleksiyalar', 'musiqi-aletleri', 'idman-ve-asude', 'kitab-ve-jurnallar', 'kempinq-ovculuq-ve-bagciliq'],
                 'title' => 'Yeni?',
                 'type' => 'check',
                 'required' => 2,
             ],
             [
-                'category_seflinks' => ['oyuncaqlar', 'avtomobil-oturacaqlari', 'usaq-arabalari', 'usaq-avtomobilleri', 'carpayilar-ve-besikler', 'usaq-dasiyicilari', 'usaq-geyimi', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'suruskenler-ve-meydancalar', 'manejler', 'mektebliler-ucun', 'yurutecler', 'hamam-ve-gigiyena', 'usaq-tekstili', 'qidalanma-oturacaqlari', 'diger', 'geyim-ve-ayaqqabilar', 'saat-ve-zinet-esyalari', 'aksesuarlar', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'masaustu-kompyuterler', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'gemiriciler', 'atlar', 'dovsanlar', 'heyvanlar-ucun-mehsullar', 'kt-heyvanlari', 'akvariumlar-ve-baliqlar', 'quslar', 'pisikler', 'itler', 'ehtiyyat-hisseleri-ve-aksesuarlar'],
+                'category_seflinks' => ['oyuncaqlar', 'avtomobil-oturacaqlari', 'usaq-arabalari', 'usaq-avtomobilleri', 'carpayilar-ve-besikler', 'usaq-dasiyicilari', 'usaq-geyimi', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'suruskenler-ve-meydancalar', 'manejler', 'mektebliler-ucun', 'yurutecler', 'hamam-ve-gigiyena', 'usaq-tekstili', 'qidalanma-oturacaqlari', 'diger', 'geyim-ve-ayaqqabilar', 'saat-ve-zinet-esyalari', 'aksesuarlar', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'masaustu-kompyuterler', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'gemiriciler', 'atlar', 'dovsanlar', 'heyvanlar-ucun-mehsullar', 'kt-heyvanlari', 'akvariumlar-ve-baliqlar', 'quslar', 'pisikler', 'itler', 'ehtiyyat-hisseleri-ve-aksesuarlar', 'temir-ve-tikinti',  'mebeller', 'meiset-texnikasi', 'qab-qacaq-ve-metbex-levazimatlari', 'erzaq', 'bitkiler', 'xalcalar-ve-aksesuarlar', 'ev-tekstili', 'ev-ve-bag-ucun-isiqlandirma', 'dekor-ve-interyer', 'bag-ve-bostan', 'ev-teserrufati-mallari', 'audio-ve-video', 'kompyuter-aksesuarlari', 'oyunlar-pultlar-ve-proqramlar', 'komponentler-ve-monitorlar', 'planset-ve-elektron-kitablar', 'noutbuklar-ve-netbuklar', 'ofis-avadanligi-ve-istehlak-materiallari', 'telefonlar', 'nomreler-ve-sim-kartlar', 'fototexnika', 'sebeke-ve-server-avadanligi', 'televizorlar-ve-aksesuarlar', 'smart-saat-ve-qolbaqlar', 'velosipedler', 'kolleksiyalar', 'musiqi-aletleri', 'idman-ve-asude', 'kitab-ve-jurnallar', 'kempinq-ovculuq-ve-bagciliq'],
                 'title' => 'Çatdırılma?',
                 'type' => 'check',
                 'required' => 2,
             ],
             [
-                'category_seflinks' => ['oyuncaqlar', 'carpayilar-ve-besikler', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'hamam-ve-gigiyena', 'aksesuarlar', 'mebeller', 'erzaq', 'bitkiler', 'xalcalar-ve-aksesuarlar', 'ev-tekstili', 'ev-ve-bag-ucun-isiqlandirma', 'dekor-ve-interyer', 'bag-ve-bostan', 'ev-teserrufati-mallari', 'kompyuter-aksesuarlari', 'tehlukesizlik-sistemleri'],
+                'category_seflinks' => ['oyuncaqlar', 'carpayilar-ve-besikler', 'usaq-mebeli', 'usaq-qidasi-ve-beslenmesi', 'hamam-ve-gigiyena', 'aksesuarlar', 'mebeller', 'erzaq', 'bitkiler', 'xalcalar-ve-aksesuarlar', 'ev-tekstili', 'ev-ve-bag-ucun-isiqlandirma', 'dekor-ve-interyer', 'bag-ve-bostan', 'ev-teserrufati-mallari', 'kompyuter-aksesuarlari', 'tehlukesizlik-sistemleri', 'audio-ve-video', 'komponentler-ve-monitorlar', 'sebeke-ve-server-avadanligi', 'kempinq-ovculuq-ve-bagciliq'],
                 'title' => 'Malın tipi',
                 'type' => 'select',
                 'required' => 1,
             ],
             [
-                'category_seflinks' => ['mektebliler-ucun', 'saat-ve-zinet-esyalari', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'temir-ve-tikinti', 'meiset-texnikasi', 'qab-qacaq-ve-metbex-levazimatlari', 'audio-ve-video', 'oyunlar-pultlar-ve-proqramlar', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'heyvanlar-ucun-mehsullar', 'yuk-masinlari-ve-qosqular', 'aqrotexnika', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'su-neqliyyati'],
+                'category_seflinks' => ['mektebliler-ucun', 'saat-ve-zinet-esyalari', 'saglamliq-ve-gozellik', 'elektron-siqaretler-ve-tutun-qizdiricilari', 'temir-ve-tikinti', 'meiset-texnikasi', 'qab-qacaq-ve-metbex-levazimatlari', 'audio-ve-video', 'oyunlar-pultlar-ve-proqramlar', 'biznes-ucun-avadanliq', 'biznes-ucun-avadanliq', 'heyvanlar-ucun-mehsullar', 'yuk-masinlari-ve-qosqular', 'aqrotexnika', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'su-neqliyyati', 'planset-ve-elektron-kitablar', 'ofis-avadanligi-ve-istehlak-materiallari', 'fototexnika', 'televizorlar-ve-aksesuarlar', 'smart-saat-ve-qolbaqlar', 'biletler-ve-seyahetler', 'velosipedler', 'kolleksiyalar', 'musiqi-aletleri', 'idman-ve-asude', 'kitab-ve-jurnallar'],
                 'title' => 'Malın növü',
+                'type' => 'select',
+                'required' => 1,
+            ],
+            [
+                'category_seflinks' => ['avtobuslar', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'avtomobiller', 'noutbuklar-ve-netbuklar', 'telefonlar'],
+                'title' => 'Marka',
                 'type' => 'select',
                 'required' => 1,
             ],
@@ -173,8 +179,8 @@ class OptionSeeder extends Seeder
                 'required' => 1,
             ],
             [
-                'category_seflinks' => ['avtobuslar', 'tikinti-texnikasi', 'motosikletler-ve-mopedler', 'avtomobiller'],
-                'title' => 'Marka',
+                'category_seflinks' => ['avtomobiller'],
+                'title' => 'Rəng',
                 'type' => 'select',
                 'required' => 1,
             ],
@@ -185,7 +191,7 @@ class OptionSeeder extends Seeder
                 'required' => 1,
             ],
             [
-                'category_seflinks' => ['ehtiyyat-hisseleri-ve-aksesuarlar'],
+                'category_seflinks' => ['ehtiyyat-hisseleri-ve-aksesuarlar', 'tanisliq'],
                 'title' => 'Elanın növü',
                 'type' => 'select',
                 'required' => 1,
@@ -200,6 +206,30 @@ class OptionSeeder extends Seeder
                 'category_seflinks' => ['avtomobiller'],
                 'title' => 'Kuzov növü',
                 'type' => 'select',
+                'required' => 1,
+            ],
+            [
+                'category_seflinks' => ['nomreler-ve-sim-kartlar'],
+                'title' => 'Operator',
+                'type' => 'select',
+                'required' => 1,
+            ],
+            [
+                'category_seflinks' => ['nomreler-ve-sim-kartlar'],
+                'title' => 'Telefon nömrəsi',
+                'type' => 'text',
+                'required' => 1,
+            ],
+            [
+                'category_seflinks' => ['tanisliq'],
+                'title' => 'Tanışlıq məqsədi',
+                'type' => 'select',
+                'required' => 1,
+            ],
+            [
+                'category_seflinks' => ['tanisliq'],
+                'title' => 'Yaş',
+                'type' => 'text',
                 'required' => 1,
             ],
         ];

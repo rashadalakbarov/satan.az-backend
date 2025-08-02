@@ -15,11 +15,16 @@ class OptionValueController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $options = Option::whereIn('type', ['select', 'check'])->get();
+    public function index() {
+        $options = Option::with('category')
+            ->whereIn('type', ['select'])
+            ->get()
+            ->groupBy(function ($item) {
+                return $item->category->name;
+            });
 
-        $suboptions = OptionValue::latest()->paginate(10);
+        $suboptions = OptionValue::with('option')->latest()->paginate(10);
+
         return view('suboptions', compact('suboptions', 'options'));
     }
 
@@ -29,7 +34,7 @@ class OptionValueController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-            'value' => trim($request->input('default_title'))
+            'default_title' => trim($request->input('default_title'))
         ]);
 
         $validator = Validator::make($request->all(), [
@@ -51,7 +56,10 @@ class OptionValueController extends Controller
             return response()->json(["errors" => $validator->errors()]);
         }
 
+        $option = Option::find($request->default_select);
+
         $suboption = OptionValue::create([
+            'category_id' => $option->category_id,
             'option_id' => $request->default_select,
             'value' => $request->default_title,
             'activate' => $request->default_activate,
@@ -75,7 +83,7 @@ class OptionValueController extends Controller
     public function update(Request $request, string $id)
     {
         $request->merge([
-            'value' => trim($request->input('default_title_edit'))
+            'default_title_edit' => trim($request->input('default_title_edit'))
         ]);
 
         $validator = Validator::make($request->all(), [

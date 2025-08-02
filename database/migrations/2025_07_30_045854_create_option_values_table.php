@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('option_values', function (Blueprint $table) {
             $table->id();
+            $table->string('category_id');
             $table->foreignId('option_id')->constrained('options')->onDelete('cascade');
             $table->string('value');
             $table->string('activate')->default('active'); // active, passive

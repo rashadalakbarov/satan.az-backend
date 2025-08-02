@@ -19,43 +19,43 @@ class CategorySeeder extends Seeder
         $mainCategories  = [            
             [
                 'name' => 'Uşaq aləmi',
-                'image' => 'assets/img/categories/usaq_alemi.png',
+                'image' => 'categories/usaq_alemi.png',
             ],
             [
                 'name' => 'Şəxsi əşyalar',
-                'image' => 'assets/img/categories/ozel_esyalar.png',
+                'image' => 'categories/ozel_esyalar.png',
             ],
             [
                 'name' => 'Ev və bağ üçün',
-                'image' => 'assets/img/categories/ev_bag_ucun.png',
+                'image' => 'categories/ev_bag_ucun.png',
             ],
             [
                 'name' => 'Elektronika',
-                'image' => 'assets/img/categories/elektronika.png',
+                'image' => 'categories/elektronika.png',
             ],
             [
                 'name' => 'Hobbi və asudə',
-                'image' => 'assets/img/categories/hobby.png',
+                'image' => 'categories/hobby.png',
             ],
             [
                 'name' => 'Nəqliyyat',
-                'image' => 'assets/img/categories/avtomobil.png',
+                'image' => 'categories/avtomobil.png',
             ],
             [
                 'name' => 'Daşınmaz əmlak',
-                'image' => 'assets/img/categories/dasinmaz_emlak.png',
+                'image' => 'categories/dasinmaz_emlak.png',
             ],
             [
                 'name' => 'İş elanları',
-                'image' => 'assets/img/categories/is_elanlari.png',
+                'image' => 'categories/is_elanlari.png',
             ],
             [
                 'name' => 'Heyvanlar',
-                'image' => 'assets/img/categories/heyvanlar.png',
+                'image' => 'categories/heyvanlar.png',
             ],
             [
                 'name' => 'Xidmətlər və biznes',
-                'image' => 'assets/img/categories/services_business.png',
+                'image' => 'categories/services_business.png',
             ],
         ];
 
@@ -141,7 +141,7 @@ class CategorySeeder extends Seeder
                 'parent_id' => $insertedMain['Uşaq aləmi'],
             ],
             [
-                'name' => 'digər',
+                'name' => 'Digər',
                 'parent_id' => $insertedMain['Uşaq aləmi'],
             ],
 

@@ -18,14 +18,29 @@
                             <tr>
                                 <th>Əsas özəlliyin adı</th>
                                 <th>Alt özəlliyin adı</th>
+                                <th>Aktivlik</th>
                                 <th width="250px">Aksiyonlar</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach($suboptions as $suboption)
                                 <tr>
-                                    <td>{{ $suboption->option->title }}</td>
+                                    <td>
+                                        @if($suboption->option)
+                                            {{ $suboption->option->category->name ?? '(Kateqoriya yoxdur)' }} /
+                                            {{ $suboption->option->title }}
+                                        @else
+                                            (Özəllik yoxdur)
+                                        @endif
+                                    </td>
                                     <td>{{ $suboption->value }}</td>
+
+                                     <td>
+                                        <span class="badge bg-label-{{ 
+                                            $suboption->activate === 'active' ? 'success' : 'info'}} me-1">
+                                            {{ $suboption->activate_text }}
+                                        </span>
+                                    </td>
 
                                     <td>
                                         <button data-id="{{$suboption->id}}" class="btn btn-primary edit-suboption"><i class="fa-solid fa-pen me-2"></i>Yenilə</button>
@@ -93,9 +108,13 @@
                     <div class="row">
                         <div class="mb-3">
                             <label for="default_select" class="form-label">Özəllik seç</label>
-                            <select class="form-select" id="default_select" name="default_select" aria-label="Default select example">
-                                @foreach($options as $option)
-                                    <option value="{{ $option->id }}">{{ $option->title }}</option>
+                            <select class="form-select @error('default_select') is-invalid @enderror" id="default_select" name="default_select" aria-label="Default select example">
+                                @foreach($options as $categoryName => $groupedOptions)
+                                    <optgroup label="{{ $categoryName }}">
+                                        @foreach($groupedOptions as $option)
+                                            <option value="{{ $option->id }}">{{ $option->title }}</option>
+                                        @endforeach
+                                    </optgroup>
                                 @endforeach
                             </select>
                             @error('default_select') <small class="text-danger">{{ $message }}</small> @enderror
@@ -103,13 +122,13 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="default_title">Özəlliyin adı</label>
-                            <input type="text" class="form-control" id="default_title" name="default_title" value="{{old('default_title')}}">
+                            <input type="text" class="form-control @error('default_title') is-invalid @enderror" id="default_title" name="default_title" value="{{old('default_title')}}">
                             @error('default_title') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="default_activate" class="form-label">Aktivlik</label>
-                            <select class="form-select" id="default_activate" name="default_activate" aria-label="Default select example">
+                            <select class="form-select @error('default_activate') is-invalid @enderror" id="default_activate" name="default_activate" aria-label="Default select example">
                                 <option selected value="active">Aktivləşdir</option>
                                 <option value="passive">Deaktiv et</option>
                             </select>
@@ -145,9 +164,13 @@
                     <div class="row">
                          <div class="mb-3">
                             <label for="default_select_edit" class="form-label">Özəllik seç</label>
-                            <select class="form-select" id="default_select_edit" name="default_select_edit" aria-label="Default select example">
-                                @foreach($options as $option)
-                                    <option value="{{ $option->id }}">{{ $option->title }}</option>
+                            <select class="form-select @error('default_select_edit') is-invalid @enderror" id="default_select_edit" name="default_select_edit" aria-label="Default select example">
+                                @foreach($options as $categoryName => $groupedOptions)
+                                    <optgroup label="{{ $categoryName }}">
+                                        @foreach($groupedOptions as $option)
+                                            <option value="{{ $option->id }}">{{ $option->title }}</option>
+                                        @endforeach
+                                    </optgroup>
                                 @endforeach
                             </select>
                             @error('default_select_edit') <small class="text-danger">{{ $message }}</small> @enderror
@@ -155,13 +178,13 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="default_title_edit">Özəlliyin adı</label>
-                            <input type="text" class="form-control" id="default_title_edit" name="default_title_edit" value="{{old('default_title')}}">
+                            <input type="text" class="form-control @error('default_title_edit') is-invalid @enderror" id="default_title_edit" name="default_title_edit" value="{{old('default_title_edit')}}">
                             @error('default_title_edit') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="default_activate_edit" class="form-label">Aktivlik</label>
-                            <select class="form-select" id="default_activate_edit" name="default_activate_edit" aria-label="Default select example">
+                            <select class="form-select @error('default_activate_edit') is-invalid @enderror" id="default_activate_edit" name="default_activate_edit" aria-label="Default select example">
                                 <option selected value="active">Aktivləşdir</option>
                                 <option value="passive">Deaktiv et</option>
                             </select>
@@ -255,7 +278,7 @@
                 success: function(response) {
                     if(response.errors){
                         $.each(response.errors, function(key, value){
-                            $("#"+key+"-edit").after('<div class="text-danger error-message">' + value[0] + '<div/>');
+                            $("#" + key).after('<div class="text-danger error-message">' + value[0] + '<div/>');
                         });
                     } else {
                         $('#editModal').modal('hide');

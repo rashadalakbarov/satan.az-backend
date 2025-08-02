@@ -10,24 +10,24 @@
                 <h5 class="mb-0">Yeni kateqoriya formu</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                     @csrf
 
                     <div class="mb-3">
                         <label for="default_image">Logo</label>                        
-                        <input type="file" id="default_image" name="default_image" class="form-control">
+                        <input type="file" id="default_image" name="default_image" class="form-control @error('default_image') is-invalid @enderror">
                         @error('default_image') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="default_fullname">Kateqoriyanın adı</label>
-                        <input type="text" class="form-control" id="default_fullname" placeholder="Məs, Elektronika" name="default_fullname" value="{{old('default_fullname')}}">
+                        <input type="text" class="form-control @error('default_fullname') is-invalid @enderror" id="default_fullname" placeholder="Məs, Elektronika" name="default_fullname" value="{{old('default_fullname')}}">
                         @error('default_fullname') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="default_select" class="form-label">Kateqoriya seç</label>
-                        <select class="form-select" id="default_select" name="default_select" aria-label="Default select example">
+                        <select class="form-select  @error('default_select') is-invalid @enderror" id="default_select" name="default_select" aria-label="Default select example">
                             <option value="">Ana Kateqoriya</option>
                             @foreach($categories as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -46,6 +46,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Yarat</button>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Geri</a>
                 </form>
             </div>
         </div>

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ElanSeeder::class,
             CategorySeeder::class,
             OptionSeeder::class,
+            OptionValueSeeder::class,
         ]);
     }
 }

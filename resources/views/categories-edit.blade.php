@@ -10,27 +10,27 @@
                 <h5 class="mb-0">Kateqoriya yeniləmə formu</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                     @csrf
                     @method('PUT')
 
                     @if($category->parent_id == null)
                         <div class="mb-3">
                             <label for="default_image">Logo</label>                        
-                            <input type="file" id="default_image" name="default_image" class="form-control">
+                            <input type="file" id="default_image" name="default_image" class="form-control  @error('default_image') is-invalid @enderror">
                             @error('default_image') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     @endif
 
                     <div class="mb-3">
                         <label class="form-label" for="default_fullname">Kateqoriyanın adı</label>
-                        <input type="text" class="form-control" id="default_fullname" placeholder="Məs, Elektronika" name="default_fullname" value="{{ old('name', $category->name) }}">
+                        <input type="text" class="form-control @error('default_fullname') is-invalid @enderror" id="default_fullname" placeholder="Məs, Elektronika" name="default_fullname" value="{{ old('name', $category->name) }}">
                         @error('default_fullname') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
 
                     <div class="mb-3">
                          <label for="default_select" class="form-label">Ana kateqoriya (əgər varsa)</label>
-                        <select name="default_select" id="default_select" class="form-select">
+                        <select name="default_select" id="default_select" class="form-select @error('default_select') is-invalid @enderror">
                             <option value="">— Ana kateqoriya olsun —</option>
                             @foreach($allCategories as $cat)
                                 <option value="{{ $cat->id }}" @selected($category->default_select == $cat->id)>
@@ -43,7 +43,7 @@
 
                     <div class="mb-3">
                         <label for="default_activate" class="form-label">Aktivlik</label>
-                        <select class="form-select" id="default_activate" name="default_activate" aria-label="Default select example">
+                        <select class="form-select @error('default_activate') is-invalid @enderror" id="default_activate" name="default_activate" aria-label="Default select example">
                             <option value="active" @selected($category->activate == 'active')>Aktivləşdir</option>
                             <option value="passive" @selected($category->activate == 'passive')>Deaktiv et</option>
                         </select>
