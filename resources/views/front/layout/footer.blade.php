@@ -2,7 +2,7 @@
     <footer class="pt-3 mt-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item">
-                <a href="#" class="nav-a px-2 text-body-secondary text-decoration-none">
+                <a href="{{route('about')}}" class="nav-a px-2 text-body-secondary text-decoration-none">
                     Layihə haqqında
                 </a>
             </li>

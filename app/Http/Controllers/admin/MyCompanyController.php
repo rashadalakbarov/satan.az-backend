@@ -94,4 +94,22 @@ class MyCompanyController extends Controller
 
         return redirect()->back()->with('success', 'Parametrlər şəkildə uğurla yeniləndi.');
     }
+
+    public function about(Request $request){
+        $request->validate([
+            'default_textarea_about' => [
+                'required',
+                'string',
+                'min:5',
+            ],
+        ], [
+            'default_textarea_about.required' => 'Haqqımızda sahəsi boş buraxılmamalıdır.',
+            'default_textarea_about.string' => 'Haqqımızda sahəsi mətn şəklində olmalıdır.',
+            'default_textarea_about.min' => 'Haqqımızda sahəsi ən az :min simvol olmalıdır.',
+        ]);
+
+        Config::setValue('about', $request->input('default_textarea_about'));
+
+        return redirect()->back()->with('success', 'Haqqımızda sahəsi şəkildə uğurla yeniləndi.');
+    }
 }

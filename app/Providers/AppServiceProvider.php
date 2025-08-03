@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
             $company = [
                 'name' => Config::get('site_name'),
                 'logo' => Config::get('logo_url'),
+                'about' => Config::get('about'),
             ];
 
             $socialSettings = Config::where('key', 'like', '%_url')->get();

@@ -37,6 +37,7 @@ Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group
             Route::post('/my-company', 'update')->name('update');
             Route::post('/my-company/contact', 'contact')->name('contact');
             Route::post('/my-company/social', 'social')->name('social');
+            Route::post('/my-company/about', 'about')->name('about');
         });
         
 
@@ -54,6 +55,7 @@ Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group
             Route::get('/elanlar', 'index')->name('index');
             Route::get('/elanlar/{id}', 'show')->name('show');
             Route::post('/elanlar/{id}', 'update')->name('update');
+            Route::get('/get-option-values/{option_id}', 'getOptionValues')->name('get-optionvalue');
         });
 
         // categories
@@ -76,6 +78,7 @@ Route::prefix('admin')->name('admin.')->controller(AuthController::class)->group
 
 // home
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::prefix('new')->controller(AddNewController::class)->name('new.')->group(function(){
     Route::get('/', 'index')->name('index');

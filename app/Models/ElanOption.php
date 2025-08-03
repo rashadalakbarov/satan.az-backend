@@ -10,7 +10,10 @@ class ElanOption extends Model
         'elan_id',
         'category_id',
         'option_id',
-        'suboption_id',
         'value',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

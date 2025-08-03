@@ -8,6 +8,7 @@
         <!-- Meta Tags -->
         <title>{{ $company['name'] ? $company['name'] : "Satan.az" }} - Pulsuz Elanlar Saytı — Maşın, Ev, Telefon, Geyim, Mebel — Bakı, Azərbaycan</title>
         <link rel="icon" type="image/x-icon" href="{{ $company['logo'] === 'storage/logo/logo.png' ? asset('storage/logo/logo.png') : asset('assets/img/favicon/favicon.png')}}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Font Awesome 6.1.2 -->
         <link rel="stylesheet" href="{{asset('/')}}front/plugin/fontawesome-free-6.7.2/css/all.css">

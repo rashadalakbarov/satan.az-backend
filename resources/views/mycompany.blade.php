@@ -133,5 +133,23 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <h5 class="card-header">Layihə Məlumatları </h5>
+            <div class="card-body">
+                <form action="{{ route('admin.mycompany.about') }}" method="POST">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="default_textarea_about" class="form-label">Layihə Haqqında</label>
+                        <textarea class="form-control" id="default_textarea_about" rows="7" name="default_textarea_about">{{ $settings['about'] ?? '' }}</textarea>
+                        @error('default_textarea_about') <small class="text-danger">{{ $message }}</small> @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Yadda saxla</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

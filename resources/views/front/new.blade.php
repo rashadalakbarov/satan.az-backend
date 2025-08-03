@@ -1,7 +1,6 @@
 @extends('front.layout.mixed')
 
 @section('content')
-<div id="formErrors" class="alert alert-danger d-none" role="alert"></div>
 <div class="border py-5 rounded">
     <h1 class="fs-3 my-4 text-center">Yeni elan</h1>
 
@@ -13,7 +12,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="categorySelect" class="form-label">Kateqoriyalar</label>
-                            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="categorySelect">
+                            <select class="form-select" name="category_id" id="categorySelect">
                                 <option value="">Kateqoriya axtar ...</option>
                                 @foreach($mainCategories as $main)
                                     <optgroup label="{{ $main->name }}">
@@ -23,7 +22,7 @@
                                     </optgroup>
                                 @endforeach
                             </select>
-                             @error('category_id') <small class="text-danger">{{ $message }}</small> @enderror
+                             @error('category_id') <small class="text-red-500" id="error_category_id">{{ $message }}</small> @enderror
                         </div>
                     </div>
 
@@ -45,6 +44,8 @@
 $(document).ready(function () {
 
     $('#categorySelect').on('change', function () {
+        $("#error_category_id").remove();
+
         let categoryId = $(this).val();
 
         $('#dynamicOptions').html('<div class="text-muted">Yüklənir...</div>');
@@ -61,10 +62,11 @@ $(document).ready(function () {
                             html += `
                                 <div class="col-md-3">
                                     <div class="form-check mb-1">
-                                        <input class="form-check-input @error('option_${option.id}') is-invalid @enderror" type="checkbox" name="option_${option.id}" value="1" id="option${option.id}">
+                                        <input class="form-check-input" type="checkbox" name="option_${option.id}" value="1" id="option${option.id}" ${option.required === '1' ? 'required' : ''}>
                                         <label class="form-check-label" for="option${option.id}">
                                             ${option.title}
                                         </label>
+                                        @error('option_${option.id}')<div class="text-red-500 text-sm">{{ $message }}</div> @enderror
                                     </div>
                                 </div>
                             `;
@@ -73,9 +75,10 @@ $(document).ready(function () {
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="option${option.id}">${option.title} ${option.required === '1' ? '<span class="text-danger">*</span>' : ''}</label>
-                                        <select class="form-select option-select @error('option_${option.id}') is-invalid @enderror" name="option_${option.id}" id="option${option.id}" data-option-id="${option.id}">
+                                        <select class="form-select option-select" name="option_${option.id}" id="option${option.id}" data-option-id="${option.id}" ${option.required === '1' ? 'required' : ''}>
                                             <option value="">Yüklənir...</option>
                                         </select>
+                                        @error('option_${option.id}')<div class="text-red-500 text-sm">{{ $message }}</div> @enderror
                                     </div>
                                 </div>
                             `;
@@ -83,8 +86,9 @@ $(document).ready(function () {
                             html += `
                                 <div class="col-12">
                                     <div class="mb-1">
-                                        <label class="form-label" for="option${option.id}">${option.title}</label>
-                                        <input type="text" class="form-control @error('option_${option.id}') is-invalid @enderror" name="option_${option.id}" id="option${option.id}">
+                                        <label class="form-label" for="option${option.id}">${option.title} ${option.required === '1' ? '<span class="text-danger">*</span>' : ''}</label>
+                                        <input type="text" class="form-control" name="option_${option.id}" id="option${option.id}" ${option.required === '1' ? 'required' : ''}>
+                                        @error('option_${option.id}')<div class="text-red-500 text-sm">{{ $message }}</div> @enderror
                                     </div>
                                 </div>
                             `;
@@ -128,29 +132,72 @@ $(document).ready(function () {
 
 
 $('form').on('submit', function (e) {
-    let isValid = true;
-    let errorMessages = [];
+    e.preventDefault(); // sayfa yenilemesini engelle
 
-    // Hata kutusunu temizle
-    $('#formErrors').addClass('d-none').html('');
+    const form = $(this)[0];
+    const formData = new FormData(form);
+    const action = $(this).attr('action');
 
-    // Dinamik required alanları kontrol et
-    $('#dynamicOptions [required]').each(function () {
-        if (!$(this).val() || $(this).val().trim() === '') {
-            isValid = false;
-            let label = $(this).closest('.mb-1').find('label').text().trim();
-            errorMessages.push(`<li>${label} sahəsi doldurulmalıdır.</li>`);
-            $(this).addClass('is-invalid');
-        } else {
-            $(this).removeClass('is-invalid');
+    // Önce hataları temizle
+    $("#error_category_id").remove();
+
+    $.ajax({
+        url: action,
+        type: 'POST',
+        data: formData,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        processData: false,
+        contentType: 'application/json',
+        success: function (res) {
+            // Başarılı olursa yönlendirme veya mesaj
+            alert('Elan uğurla əlavə edildi');
+            // window.location.href = '/some-success-url'; // istersen yönlendir
+        },
+        error: function (xhr) {
+            if (xhr.status === 422) {
+                
+                const errors = xhr.responseJSON.errors;
+
+                $('.text-red-500.error-message').remove();
+
+                Object.keys(errors).forEach(function (field) {
+                    const msg = errors[field][0];
+
+                    // İlgili input'u bul
+                    const input = $(`[name="${field}"]`);
+
+                    if (input.length) {
+                        // Hatanın input altına yazılması
+                        const errorHtml = `<div class="text-danger error-message">${msg}</div>`;
+
+                        // Eğer input bir checkbox ise, üst div'e ekle
+                        if (input.attr('type') === 'checkbox') {
+                            input.closest('.form-check').append(errorHtml);
+                        } else {
+                            input.after(errorHtml);
+                        }
+                    }
+                });
+
+                // let errorList = '';
+
+                // Object.keys(errors).forEach(function (field) {
+                //     const msg = errors[field][0];
+                //     errorList += `<li>${msg}</li>`;
+
+                //     const input = $(`[name="${field}"]`);
+                // });
+
+                // $('#formErrors').removeClass('d-none').html(`<ul class="mb-0">${errorList}</ul>`);
+            } else {
+                $('#formErrors').removeClass('d-none').text('Bilinməyən xəta baş verdi.');
+            }
         }
     });
-
-    if (!isValid) {
-        e.preventDefault(); // form gönderimini engelle
-        $('#formErrors').removeClass('d-none').html(`<ul class="mb-0">${errorMessages.join('')}</ul>`);
-    }
 });
+
 
 </script>
 @endsection

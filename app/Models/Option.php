@@ -16,6 +16,10 @@ class Option extends Model
         return $this->hasMany(OptionValue::class);
     }
 
+    public function values() {
+        return $this->hasMany(OptionValue::class, 'option_id');
+    }
+
     public function getActivateTextAttribute() {
         switch ($this->activate) {
             case 'active':

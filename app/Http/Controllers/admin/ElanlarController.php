@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Elan;
 use App\Models\City;
+use App\Models\Category;
+use App\Models\Option;
+use App\Models\ElanOption;
+use App\Models\OptionValue;
 
 class ElanlarController extends Controller
 {
@@ -18,10 +22,30 @@ class ElanlarController extends Controller
     }
 
     public function show($id) {
-        $elan = Elan::with('user', 'city')->findOrFail($id);
+        $elan = Elan::with('user', 'city', 'option.category')->findOrFail($id);
         $cities = City::all();
+        $mainCategories = Category::whereNull('parent_id')->where('activate', 'active')->with('children')->get();
 
-        return view('elanlar-update', compact('elan', 'cities'));
+        // Seçili kategoriye ait tüm optionlar
+        $selectedCategoryId = optional($elan->option)->category_id;
+        $options = Option::with('values')
+            ->where('category_id', $selectedCategoryId)
+            ->where('activate', 'active')
+            ->get();
+
+        // Mevcut ElanOption kayıtları
+        $existingOptions = ElanOption::where('elan_id', $id)->get()->keyBy('option_id');
+
+        return view('elanlar-update', compact('elan', 'cities', 'mainCategories', 'options', 'existingOptions'));
+    }
+
+    public function getOptionValues($option_id) {
+        $values = OptionValue::
+            where('option_id', $option_id)
+            ->where('activate', 'active')
+            ->pluck('value');
+
+        return response()->json($values);
     }
 
     public function update(Request $request, $id){
@@ -42,6 +66,7 @@ class ElanlarController extends Controller
             ],
             'elan_activate' => 'required',
             'elan_status' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ], [
             'elantitle.required' => 'Elan başlığı sahəsi boş buraxılmamalıdır.',
             'elanprice.required' => 'Elan qiyməti boş buraxılmamalıdır.',
@@ -56,9 +81,13 @@ class ElanlarController extends Controller
 
             'elan_description.string' => 'Elan detayı mətn şəklində olmalıdır.',
             'elan_description.max' => 'Elan detayı ən çox :max simvol ola bilər.',
+
+            'category_id.required' => 'Kateqoriyanın adı boş buraxılmamalıdır.',
+            'category_id.exists' => 'Seçilən kateqoriya mövcud deyil.',
         ]);
 
         $elan = Elan::findOrFail($id);
+
         $elan->title = $request->elantitle;
         $elan->price = $request->elanprice;
         $elan->city_id = $request->elan_city;
@@ -66,6 +95,43 @@ class ElanlarController extends Controller
         $elan->activate = $request->elan_activate;
         $elan->status = $request->elan_status;
         $elan->save();
+
+        dd($request->option);
+
+        // if ($elan->option) {
+        //     $elan->option->update([
+        //         'category_id' => $request->category_id,
+        //         'option_id' => key($request->options), // ilk option
+        //         'value' => $request->options[key($request->options)],
+        //     ]);
+        // } else {
+        //     ElanOption::create([
+        //         'elan_id' => $elan->id,
+        //         'category_id' => $request->category_id,
+        //         'option_id' => key($request->options),
+        //         'value' => $request->options[key($request->options)],
+        //     ]);
+        // }
+
+        // ElanOption update
+        // Eski ElanOption kayıtlarını sil
+        // ElanOption::where('elan_id', $elan->id)->delete();
+        
+        // 4. Yeni ElanOption'ları ekle
+        // $categoryId = $request->category_id;
+        // $options = $request->input('options', []); // boş olsa bile hata vermez
+
+        // foreach ($options as $optionId => $value) {
+        //     // checkbox tipi ise dizi gelir
+        //     $optionValue = is_array($value) ? json_encode($value) : $value;
+
+        //     ElanOption::create([
+        //         'elan_id' => $elan->id,
+        //         'category_id' => $categoryId,
+        //         'option_id' => $optionId,
+        //         'value' => $optionValue,
+        //     ]);
+        // }
 
         return redirect()->back()->with('success', 'Elan başarılı şəkildə yeniləndi.');
     }

@@ -41,4 +41,8 @@ class Elan extends Model
     public function city(){
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function option() {
+        return $this->hasOne(ElanOption::class, 'elan_id');
+    }
 }

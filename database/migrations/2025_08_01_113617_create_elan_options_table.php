@@ -16,8 +16,7 @@ return new class extends Migration
             $table->integer('elan_id');
             $table->integer('category_id');
             $table->integer('option_id');
-            $table->integer('suboption_id');
-            $table->integer('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
